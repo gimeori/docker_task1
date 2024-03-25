@@ -1,7 +1,6 @@
 
 from fastapi import FastAPI, BackgroundTasks
 from routes import router
-import uvicorn
 from datetime import datetime
 import asyncio
 from fastapi.middleware.wsgi import WSGIMiddleware
@@ -31,8 +30,3 @@ async def logs(request,call):
     process_time=datetime.now() - start_time
     logging.info(f'{request.method} {request.url} - {response.status_code}')
     return response
-
-
-
-if __name__=="__main__":
-    uvicorn.run(host="0.0.0.0", port=5000, log_level="info")
